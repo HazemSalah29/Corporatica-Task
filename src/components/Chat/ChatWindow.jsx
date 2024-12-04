@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import MessageList from './MessageList';
 import MessageInput from './MessageInput';
+import TableView from '../Visualizations/TableView';
 
-const ChatWindow = () => {
+const ChatWindow = ({ columns, data }) => {
   const [messages, setMessages] = useState([]);
 
   const handleSendMessage = (message) => {
@@ -18,6 +19,10 @@ const ChatWindow = () => {
 
       {/* Message List */}
       <MessageList messages={messages} />
+      <div className="p-6 bg-gray-800 text-white">
+        <h2 className="text-xl font-bold mb-4">Static Table</h2>
+        <TableView columns={columns} data={data} />
+      </div>
 
       {/* Message Input */}
       <MessageInput onSend={handleSendMessage} />
